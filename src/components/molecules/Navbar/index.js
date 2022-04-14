@@ -1,5 +1,6 @@
 import M from "materialize-css/dist/js/materialize.min.js";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -7,6 +8,17 @@ const Navbar = () => {
     var elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems, {});
   });
+  useEffect(() => {
+    var elems = document.querySelectorAll(".dropdown-trigger");
+    M.Dropdown.init(elems, {});
+  });
+
+  const { user } = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user-token");
+    window.location.reload();
+  };
 
   return (
     <>
@@ -22,6 +34,41 @@ const Navbar = () => {
               </i>
             </a>
             <ul className="right hide-on-med-and-down">
+              <li>
+                <a
+                  class="dropdown-trigger"
+                  href="#"
+                  data-target="dropdown1"
+                  style={styles.navigation}
+                >
+                  <i className="material-icons left" style={styles.navigation}>
+                    account_circle
+                  </i>
+                  Akun
+                </a>
+                <ul id="dropdown1" class="dropdown-content">
+                  {user?.email ? (
+                    <>
+                      <li>
+                        <Link to="/dashboard" style={styles.navigation}>
+                          Dashboard
+                        </Link>
+                      </li>
+                      <li>
+                        <a style={styles.navigation} onClick={handleLogout}>
+                          Keluar
+                        </a>
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <Link to="/login" style={styles.navigation}>
+                        Masuk
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </li>
               <li>
                 <Link to="/info-event" style={styles.navigation}>
                   Info Event
@@ -58,6 +105,41 @@ const Navbar = () => {
       </div>
 
       <ul className="sidenav" id="mobile-demo">
+        <li>
+          <a
+            class="dropdown-trigger"
+            href="#"
+            data-target="dropdown2"
+            style={styles.navigation}
+          >
+            <i className="material-icons left" style={styles.navigation}>
+              account_circle
+            </i>
+            Akun
+          </a>
+          <ul id="dropdown2" class="dropdown-content">
+            {user?.email ? (
+              <>
+                <li>
+                  <Link to="/dashboard" style={styles.navigation}>
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <a style={styles.navigation} onClick={handleLogout}>
+                    Keluar
+                  </a>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to="/login" style={styles.navigation}>
+                  Masuk
+                </Link>
+              </li>
+            )}
+          </ul>
+        </li>
         <li>
           <Link to="/info-event" style={styles.navigation}>
             Info Event

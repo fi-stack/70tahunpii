@@ -4,13 +4,16 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GlobalApp, MainApp } from "./layouts";
 import {
+  ChooseEvent,
   Dashboard,
   Gallery,
   Home,
   InfoEvent,
   Kontak,
   Login,
+  PaymentStatus,
   Pemenang,
+  Profile,
   ProfileUpdate,
   Register,
   Sponsor,
@@ -55,8 +58,17 @@ const App = () => {
             <Route path="/dashboard" element={<MainApp />}>
               <Route index element={<Dashboard />} />
             </Route>
+            <Route path="/profile" element={<MainApp />}>
+              <Route index element={<Profile />} />
+            </Route>
             <Route path="/profile-update" element={<MainApp />}>
               <Route index element={<ProfileUpdate />} />
+            </Route>
+            <Route path="/choose-event" element={<MainApp />}>
+              <Route index element={<ChooseEvent />} />
+            </Route>
+            <Route path="/payment-status" element={<MainApp />}>
+              <Route index element={<PaymentStatus />} />
             </Route>
           </Routes>
         </BrowserRouter>

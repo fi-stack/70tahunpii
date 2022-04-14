@@ -8,7 +8,10 @@ import Kontak from "./Kontak";
 import Register from "./Register";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
+import Profile from "./Profile";
 import ProfileUpdate from "./Profile/Update";
+import ChooseEvent from "./ChooseEvent";
+import PaymentStatus from "./PaymentStatus";
 
 export {
   Home,
@@ -21,5 +24,8 @@ export {
   Register,
   Login,
   Dashboard,
+  Profile,
   ProfileUpdate,
+  ChooseEvent,
+  PaymentStatus,
 };

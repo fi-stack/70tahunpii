@@ -1,5 +1,15 @@
 import Api from "../../../api/Api";
 
+const getParticipantsByUserId = (id) => (dispatch) => {
+  Api.get(`/participants/user/${id}`)
+    .then((res) => {
+      dispatch({ type: "GET_PARTICIPANTS_BY_USER_ID", payload: res.data.data });
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
+};
+
 const storeParticipant = (form) => {
   return new Promise((resolve, reject) => {
     Api.post("/participants", form)
@@ -24,4 +34,4 @@ const uploadPaymentProof = (form) => {
   });
 };
 
-export { storeParticipant, uploadPaymentProof };
+export { getParticipantsByUserId, storeParticipant, uploadPaymentProof };

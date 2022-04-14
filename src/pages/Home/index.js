@@ -1,7 +1,12 @@
 import { Gap } from "../../components";
+import { Helmet } from "react-helmet";
+
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <div className="row center-align">
         <img src="images/ePoster.png" className="responsive-img" />
       </div>
@@ -96,18 +101,21 @@ const Home = () => {
 
 const styles = {
   title: {
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: 700,
+    color: "#616161",
   },
   latarBelakangDanTujuan: {
-    fontSize: 20,
+    fontSize: 16,
+    color: "#616161",
   },
   imgRewardRules: {
     maxWidth: "50%",
   },
   rewardRules: {
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: 600,
+    color: "#616161",
   },
   imgLogoPII: {
     maxWidth: "25%",
