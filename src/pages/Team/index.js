@@ -58,6 +58,33 @@ const Team = () => {
       });
   };
 
+  const zeroPad = (num, pad) => {
+    var pd = Math.pow(10, pad);
+    return Math.floor(num * pd) / pd;
+  };
+
+  const timeToViewFormat = (number) => {
+    if (number !== null || number !== "") {
+      if (number > 0 && number < 60) {
+        return number + "s";
+      }
+      if (number >= 60 && number < 3600) {
+        let second = number % 60;
+        let minute = number - second;
+        minute = minute / 60;
+        return minute + "m " + second + "s";
+      } else if (number >= 3600) {
+        let second = number % 60;
+        let tempMinute = (number - second) / 60;
+        let minute = tempMinute % 60;
+        let hour = (tempMinute - minute) / 60;
+        return hour + "h " + minute + "m " + second + "s";
+      }
+    } else {
+      return "-";
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -82,7 +109,10 @@ const Team = () => {
                   <div>Status : Lead</div>
                   <div>
                     *Jika ingin menghapus / membubarkan tim klik{" "}
-                    <a onClick={() => handleDeleteTeam(teamId, user?.id)}>
+                    <a
+                      href="#"
+                      onClick={() => handleDeleteTeam(teamId, user?.id)}
+                    >
                       Hapus Tim
                     </a>
                   </div>
@@ -127,10 +157,13 @@ const Team = () => {
               <table style={{ display: "block", overflow: "auto" }}>
                 <thead>
                   <tr>
-                    <td>Athlete</td>
-                    <td>Ebib</td>
-                    <td>Nama</td>
-                    <td>Telp / Wa</td>
+                    <th>Athlete</th>
+                    <th>Ebib</th>
+                    <th>Nama Lengkap</th>
+                    <th>Telp / Wa</th>
+                    <th>Total Aktivitas</th>
+                    <th>Total Jarak (Km)</th>
+                    <th>Elapsed Time</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -169,6 +202,65 @@ const Team = () => {
                         >
                           {value.user?.phone}
                         </a>
+                      </td>
+                      <td>
+                        {value?.athlete ? (
+                          value?.athlete?.activities_count
+                        ) : (
+                          <a href="#">
+                            <i
+                              className="material-icons red-text"
+                              onClick={() => {
+                                toast.error(
+                                  `${value?.user?.name} belum melakukan koneksi Strava`
+                                );
+                              }}
+                            >
+                              error
+                            </i>
+                          </a>
+                        )}
+                      </td>
+                      <td>
+                        {value?.athlete ? (
+                          zeroPad(
+                            value?.athlete?.activities_sum_distance / 1000,
+                            1
+                          )
+                        ) : (
+                          <a href="#">
+                            <i
+                              className="material-icons red-text"
+                              onClick={() => {
+                                toast.error(
+                                  `${value?.user?.name} belum melakukan koneksi Strava`
+                                );
+                              }}
+                            >
+                              error
+                            </i>
+                          </a>
+                        )}
+                      </td>
+                      <td>
+                        {value?.athlete ? (
+                          timeToViewFormat(
+                            value?.athlete?.activities_sum_elapsed_time
+                          )
+                        ) : (
+                          <a href="#">
+                            <i
+                              className="material-icons red-text"
+                              onClick={() => {
+                                toast.error(
+                                  `${value?.user?.name} belum melakukan koneksi Strava`
+                                );
+                              }}
+                            >
+                              error
+                            </i>
+                          </a>
+                        )}
                       </td>
                       <td>
                         {team?.user_id === user?.id &&

@@ -134,7 +134,7 @@ const Leaderboard = () => {
         <div className="card">
           <div className="card-content">
             <span class="card-title">
-              Leaderboard Peserta {type === "run" ? "Lari" : "Gowes"}{" "}
+              Leaderboard Individu {type === "run" ? "Lari" : "Gowes"}{" "}
             </span>
             <a
               class="dropdown-trigger btn"

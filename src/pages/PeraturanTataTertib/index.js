@@ -42,7 +42,7 @@ const PeraturanTataTertib = () => {
             <li>Kategori lomba:</li>
             <ol type="a">
               <li>
-                Kategori Individu: kelompok umur: sd 30 tahun, 31-50 tahun, 51+
+                Kategori Individu: kelompok umur: sd 35 tahun, 35-50 tahun, 51+
               </li>
               <li>
                 Kategori tim: adalah 5 peserta yang sudah mendaftar sebagai

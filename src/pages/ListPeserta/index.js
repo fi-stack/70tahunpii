@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Helmet from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Gap } from "../../components";
 import { getListParticipantDetailsByType } from "../../redux/action";
 
@@ -49,7 +50,7 @@ const ListPeserta = () => {
                     setSearch(e.target.value);
                   }}
                 />
-                <label>Cari Ebib</label>
+                <label>Cari...</label>
               </div>
             </div>
             <table style={{ display: "block", overflow: "auto" }}>
@@ -87,10 +88,9 @@ const ListPeserta = () => {
                             <i
                               className="material-icons red-text"
                               onClick={() => {
-                                alert(
+                                toast.error(
                                   `${value?.user?.name} belum melakukan koneksi Strava`
                                 );
-                                window.location.reload();
                               }}
                             >
                               error

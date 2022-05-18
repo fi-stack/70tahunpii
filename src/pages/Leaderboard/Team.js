@@ -147,10 +147,9 @@ const Team = () => {
                                       <i
                                         className="material-icons red-text"
                                         onClick={() => {
-                                          alert(
+                                          toast.error(
                                             `${value?.user?.name} belum melakukan koneksi Strava`
                                           );
-                                          window.location.reload();
                                         }}
                                       >
                                         error
@@ -168,10 +167,9 @@ const Team = () => {
                                       <i
                                         className="material-icons red-text"
                                         onClick={() => {
-                                          alert(
+                                          toast.error(
                                             `${value?.user?.name} belum melakukan koneksi Strava`
                                           );
-                                          window.location.reload();
                                         }}
                                       >
                                         error
@@ -191,10 +189,9 @@ const Team = () => {
                                       <i
                                         className="material-icons red-text"
                                         onClick={() => {
-                                          alert(
+                                          toast.error(
                                             `${value?.user?.name} belum melakukan koneksi Strava`
                                           );
-                                          window.location.reload();
                                         }}
                                       >
                                         error
@@ -213,10 +210,9 @@ const Team = () => {
                                       <i
                                         className="material-icons red-text"
                                         onClick={() => {
-                                          alert(
+                                          toast.error(
                                             `${value?.user?.name} belum melakukan koneksi Strava`
                                           );
-                                          window.location.reload();
                                         }}
                                       >
                                         error

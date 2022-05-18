@@ -106,27 +106,6 @@ const Navbar = () => {
                 </a>
                 <ul id="dropdown3" className="dropdown-content">
                   <li>
-                    <a href="/list-peserta/run" style={styles.navigation}>
-                      List Peserta Lari
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/list-peserta/ride" style={styles.navigation}>
-                      List Peserta Gowes
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/list-tim/run" style={styles.navigation}>
-                      List Tim Lari
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/list-tim/ride" style={styles.navigation}>
-                      List Tim Gowes
-                    </a>
-                  </li>
-                  <li class="divider" tabindex="-1"></li>
-                  <li>
                     <a href="/leaderboard/run" style={styles.navigation}>
                       Leaderboard Individu Lari
                     </a>
@@ -144,6 +123,27 @@ const Navbar = () => {
                   <li>
                     <a href="/leaderboard/team/ride" style={styles.navigation}>
                       Leaderboard Tim Gowes
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li>
+                    <a href="/list-peserta/run" style={styles.navigation}>
+                      List Peserta Lari
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/list-peserta/ride" style={styles.navigation}>
+                      List Peserta Gowes
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/list-tim/run" style={styles.navigation}>
+                      List Tim Lari
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/list-tim/ride" style={styles.navigation}>
+                      List Tim Gowes
                     </a>
                   </li>
                 </ul>
@@ -275,27 +275,6 @@ const Navbar = () => {
           </a>
           <ul id="dropdown4" className="dropdown-content">
             <li>
-              <a href="/list-peserta/run" style={styles.navigation}>
-                List Peserta Lari
-              </a>
-            </li>
-            <li>
-              <a href="/list-peserta/ride" style={styles.navigation}>
-                List Peserta Gowes
-              </a>
-            </li>
-            <li>
-              <a href="/list-tim/run" style={styles.navigation}>
-                List Tim Lari
-              </a>
-            </li>
-            <li>
-              <a href="/list-tim/ride" style={styles.navigation}>
-                List Tim Gowes
-              </a>
-            </li>
-            <li class="divider" tabindex="-1"></li>
-            <li>
               <a href="/leaderboard/run" style={styles.navigation}>
                 Leaderboard Individu Lari
               </a>
@@ -313,6 +292,27 @@ const Navbar = () => {
             <li>
               <a href="/leaderboard/team/ride" style={styles.navigation}>
                 Leaderboard Tim Gowes
+              </a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
+            <li>
+              <a href="/list-peserta/run" style={styles.navigation}>
+                List Peserta Lari
+              </a>
+            </li>
+            <li>
+              <a href="/list-peserta/ride" style={styles.navigation}>
+                List Peserta Gowes
+              </a>
+            </li>
+            <li>
+              <a href="/list-tim/run" style={styles.navigation}>
+                List Tim Lari
+              </a>
+            </li>
+            <li>
+              <a href="/list-tim/ride" style={styles.navigation}>
+                List Tim Gowes
               </a>
             </li>
           </ul>

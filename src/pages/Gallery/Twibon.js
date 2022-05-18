@@ -23,13 +23,44 @@ const Twibon = () => {
             <hr />
             <Gap height={25} />
             <div style={styles.content}>
-              <a href="https://twb.nz/larigowesonlinepii2022">
-                <img
-                  src="/images/gallery/twibbonPeserta.png"
-                  className="responsive-img"
-                  style={styles.btnTwibon}
-                />
-              </a>
+              <div className="row">
+                <div className="col s6 m4 l3">
+                  <a href="https://twb.nz/larigowesonlinepii2022">
+                    <img
+                      src="/images/gallery/twibbonPeserta.png"
+                      className="responsive-img"
+                      style={styles.btnTwibon}
+                    />
+                  </a>
+                </div>
+                <div className="col s6 m4 l3">
+                  <a href="twb.nz/finisherlaridangowesonlinepii">
+                    <img
+                      src="/images/gallery/twibbonFinisher.png"
+                      className="responsive-img"
+                      style={styles.btnTwibon}
+                    />
+                  </a>
+                </div>
+                <div className="col s6 m4 l3">
+                  <a href="twb.nz/finisherlari170kmhut70pii">
+                    <img
+                      src="/images/gallery/twibbonFinisherLari.png"
+                      className="responsive-img"
+                      style={styles.btnTwibon}
+                    />
+                  </a>
+                </div>
+                <div className="col s6 m4 l3">
+                  <a href="twb.nz/finishergowes700kmhut70pii">
+                    <img
+                      src="/images/gallery/twibbonFinisherGowes.png"
+                      className="responsive-img"
+                      style={styles.btnTwibon}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -49,7 +80,7 @@ const styles = {
     color: "#616161",
   },
   btnTwibon: {
-    maxWidth: "25%",
+    marginBottom: "15px",
   },
 };
 
