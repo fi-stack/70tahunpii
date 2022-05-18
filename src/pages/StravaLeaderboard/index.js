@@ -1,5 +1,9 @@
 const StravaLeaderboard = () => {
-  return <div>Strava & Leaderboard Page</div>;
+  return (
+    <div className="center-align">
+      <img src="images/forbidden.png" className="responsive-img" />
+    </div>
+  );
 };
 
 export default StravaLeaderboard;

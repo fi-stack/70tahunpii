@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Helmet from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,7 +10,6 @@ import {
   getUser,
   uploadPaymentProof,
 } from "../../redux/action";
-import { Helmet } from "react-helmet";
 
 const PaymentStatus = () => {
   const { user } = useSelector((state) => state.user);
@@ -75,19 +75,22 @@ const PaymentStatus = () => {
                     <table>
                       <tbody>
                         <tr>
-                          <td>Tipe</td>
+                          <td>Jenis Lomba</td>
                           <td>:</td>
                           <td style={{ fontWeight: 700 }}>
-                            {value.type.toUpperCase()}
+                            {(() => {
+                              if (value.type === "run") return "Lari";
+                              else if (value.type === "ride") return "Gowes";
+                              else return "Lari & Gowes";
+                            })()}
                           </td>
                         </tr>
                         <tr>
-                          <td>Total</td>
+                          <td>Biaya</td>
                           <td>:</td>
                           <td>
-                            {" "}
+                            Rp{" "}
                             {new Intl.NumberFormat("id-ID", {
-                              style: "currency",
                               currency: "IDR",
                             }).format(parseInt(value.amount))}
                           </td>
@@ -114,42 +117,64 @@ const PaymentStatus = () => {
                           <td>Bukti Pembayaran</td>
                           <td>:</td>
                           <td>
-                            {value.payment_proof ? (
-                              <img
-                                src={`${value.payment_proof}`}
-                                className="responsive-img"
-                              />
-                            ) : (
-                              <>
-                                <div>
-                                  Silahkan melakukan pembayaran sebesar{" "}
-                                  <span style={{ fontWeight: 700 }}>
-                                    {new Intl.NumberFormat("id-ID", {
-                                      style: "currency",
-                                      currency: "IDR",
-                                    }).format(parseInt(value.amount))}
-                                  </span>{" "}
-                                  ke rekening berikut,
-                                </div>
-                                <div>
-                                  BCA : 0083764055 a/n Nuansa Cerah Informasi
-                                </div>
-                              </>
-                            )}
+                            {(() => {
+                              if (
+                                value?.payment_proof?.split("/")[0] ===
+                                "data:image"
+                              ) {
+                                return (
+                                  <img
+                                    src={`${value?.payment_proof}`}
+                                    className="responsive-img"
+                                  />
+                                );
+                              } else if (
+                                value?.payment_proof?.split("/")[0] ===
+                                "data:application"
+                              ) {
+                                return (
+                                  <iframe src={`${value?.payment_proof}`} />
+                                );
+                              } else {
+                                return (
+                                  <>
+                                    <div>
+                                      Silahkan melakukan pembayaran sebesar{" "}
+                                      <span style={{ fontWeight: 700 }}>
+                                        Rp{" "}
+                                        {new Intl.NumberFormat("id-ID", {
+                                          currency: "IDR",
+                                        }).format(parseInt(value.amount))}
+                                      </span>{" "}
+                                      ke rekening
+                                    </div>
+                                    <div>
+                                      BCA : 0083764055 a/n PT. Nuansa Cerah
+                                      Informasi
+                                    </div>
+                                  </>
+                                );
+                              }
+                            })()}
                           </td>
                         </tr>
                       </tbody>
                     </table>
                     <Gap height={25} />
                     <form onSubmit={storeUploadPaymentProof}>
-                      <span>Upload Bukti Pembayaran</span>
+                      <span>
+                        Unggah / Upload Bukti Pembayaran{" "}
+                        <span className="red-text">
+                          *format: jpeg, jpg, png, pdf
+                        </span>
+                      </span>
                       <div class="file-field input-field">
                         <div class="btn">
                           <span>File</span>
                           <input
                             type="file"
                             label="Image"
-                            accept=".jpeg, .png, .jpg"
+                            accept=".jpeg, .png, .jpg, .pdf"
                             className="custom-file-input"
                             onChange={(e) => {
                               handleFileUpload(e);
@@ -166,7 +191,7 @@ const PaymentStatus = () => {
                         type="submit"
                         className="waves-effect waves-light btn"
                       >
-                        Upload
+                        Unggah / Upload
                       </button>
                       <Gap height={25} />
                       <div>

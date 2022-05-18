@@ -40,4 +40,20 @@ const getVillages = (id) => (dispatch) => {
     });
 };
 
-export { getProvinces, getCities, getDistricts, getVillages };
+const getCitiesBySearch = (search) => (dispatch) => {
+  Api.get(`/cities?search=${search}`)
+    .then((res) => {
+      dispatch({ type: "GET_CITIES_BY_SEARCH", payload: res.data.data });
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
+};
+
+export {
+  getProvinces,
+  getCities,
+  getDistricts,
+  getVillages,
+  getCitiesBySearch,
+};

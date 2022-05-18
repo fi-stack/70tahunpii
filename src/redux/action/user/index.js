@@ -38,6 +38,7 @@ const getUser = () => (dispatch) => {
     .catch((err) => {
       if (err.response) {
         localStorage.removeItem("user-token");
+        window.location.reload();
       }
     });
 };
@@ -64,4 +65,30 @@ const updateProfile = (form, id) => {
   });
 };
 
-export { storeRegister, storeLogin, getUser, getUserDetail, updateProfile };
+const connectStrava = (id) => (dispatch) => {
+  window.location.replace(
+    `https://70tahunpii-api.portalsepeda.com/public/api/v2/connect-strava/user/${id}`
+  );
+};
+
+const disconnectStrava = (id) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    Api.get(`/strava/disconnect/${id}`)
+      .then((res) => {
+        resolve(res.data);
+      })
+      .catch((err) => {
+        reject(err.response.data);
+      });
+  });
+};
+
+export {
+  storeRegister,
+  storeLogin,
+  getUser,
+  getUserDetail,
+  updateProfile,
+  connectStrava,
+  disconnectStrava,
+};

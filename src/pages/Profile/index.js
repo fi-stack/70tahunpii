@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Gap } from "../../components";
 import { getUserDetail } from "../../redux/action";
-import { Helmet } from "react-helmet";
+import moment from "moment";
+import Helmet from "react-helmet";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
@@ -43,11 +44,7 @@ const Profile = () => {
                   <tr>
                     <td>KTA Anggota PII</td>
                     <td>:</td>
-                    <td>
-                      {user_detail?.id_member_pii
-                        ? user_detail.id_member_pii
-                        : "Bukan Anggota"}
-                    </td>
+                    <td>{user_detail?.kta_id ? user_detail.kta_id : "-"}</td>
                   </tr>
                   <tr>
                     <td>NIK</td>
@@ -69,10 +66,12 @@ const Profile = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td>Tempat, Tanggal Lahir</td>
+                    <td>Tanggal Lahir</td>
                     <td>:</td>
                     <td>
-                      {`${user_detail?.birthplace}, ${user_detail?.birthday}`}
+                      {`${moment(user_detail?.birthday).format(
+                        "DD MMMM YYYY"
+                      )}`}
                     </td>
                   </tr>
                   <tr>
@@ -116,14 +115,28 @@ const Profile = () => {
                     <td>{user_detail?.job}</td>
                   </tr>
                   <tr>
-                    <td>Perguruan Tinggi</td>
+                    <td>Asal Perguruan Tinggi / Universitas</td>
                     <td>:</td>
-                    <td>{user_detail?.college}</td>
+                    <td>{user_detail?.college ? user_detail.college : "-"}</td>
+                  </tr>
+                  <tr>
+                    <td>Lokasi Perguruan Tinggi / Universitas</td>
+                    <td>:</td>
+                    <td>
+                      {user_detail?.college_location?.name
+                        ? user_detail.college_location.name
+                        : "-"}
+                    </td>
                   </tr>
                   <tr>
                     <td>Jurusan</td>
                     <td>:</td>
-                    <td>{user_detail?.major}</td>
+                    <td>{user_detail?.major ? user_detail.major : "-"}</td>
+                  </tr>
+                  <tr>
+                    <td>Tahun Lulus</td>
+                    <td>:</td>
+                    <td>{user_detail?.graduate_at}</td>
                   </tr>
                 </tbody>
                 <tfoot>
@@ -141,7 +154,7 @@ const Profile = () => {
                       ) : null}
                       {user_detail?.participant_details?.map((value, index) => (
                         <span style={{ fontWeight: 700 }}>
-                          {value.ebib.toUpperCase()}
+                          {value.ebib.toUpperCase()}{" "}
                         </span>
                       ))}
                     </th>

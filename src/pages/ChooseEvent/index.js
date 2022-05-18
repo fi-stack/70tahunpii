@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Helmet from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Gap } from "../../components";
-import { getUser, storeParticipant } from "../../redux/action";
-import { Helmet } from "react-helmet";
+import {
+  getParticipantsByUserId,
+  getUser,
+  storeParticipant,
+} from "../../redux/action";
 
 const ChooseEvent = () => {
   const { user } = useSelector((state) => state.user);
@@ -16,6 +20,14 @@ const ChooseEvent = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getParticipantsByUserId(user?.id));
+  }, [user]);
+
+  const { participants_by_user_id } = useSelector(
+    (state) => state.participantsByUserId
+  );
 
   const storeParticipantEvent = (e) => {
     e.preventDefault();
@@ -51,59 +63,95 @@ const ChooseEvent = () => {
           <div className="card">
             <div className="card-content">
               <span class="card-title">Pilih Event</span>
-              {user?.id_member_pii ? (
+              {user?.kta_category === "a" ? (
                 <>
                   <form onSubmit={storeParticipantEvent}>
-                    <div>
-                      Status : (
-                      {user?.id_member_pii
-                        ? `Anggota PII ${user?.id_member_pii}`
-                        : "Calon Anggota PII"}
-                      )
-                    </div>
                     <div className="row">
-                      <div className="input-field col s12">
-                        <label>
-                          <input
-                            type="radio"
-                            value="run"
-                            name="type"
-                            onChange={(e) => {
-                              setType(e.target.value);
-                              setAmount(150000);
-                            }}
-                          />
-                          <span>Run</span>
-                        </label>
-                      </div>
-                      <div className="input-field col s12">
-                        <label>
-                          <input
-                            type="radio"
-                            value="ride"
-                            name="type"
-                            onChange={(e) => {
-                              setType(e.target.value);
-                              setAmount(150000);
-                            }}
-                          />
-                          <span>Ride</span>
-                        </label>
-                      </div>
-                      <div className="input-field col s12">
-                        <label>
-                          <input
-                            type="radio"
-                            value="run-ride"
-                            name="type"
-                            onChange={(e) => {
-                              setType(e.target.value);
-                              setAmount(300000);
-                            }}
-                          />
-                          <span>Run & Ride</span>
-                        </label>
-                      </div>
+                      {participants_by_user_id.map((value, index) =>
+                        value.type === "run-ride" ? null : null
+                      )}
+                      {participants_by_user_id.map((value, index) =>
+                        value.type === "run" ? (
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="ride"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(150000);
+                                }}
+                              />
+                              <span>Gowes</span>
+                            </label>
+                          </div>
+                        ) : null
+                      )}
+                      {participants_by_user_id.map((value, index) =>
+                        value.type === "ride" ? (
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="run"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(150000);
+                                }}
+                              />
+                              <span>Lari</span>
+                            </label>
+                          </div>
+                        ) : null
+                      )}
+                      {!participants_by_user_id.length ? (
+                        <>
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="run"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(150000);
+                                }}
+                              />
+                              <span>Lari</span>
+                            </label>
+                          </div>
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="ride"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(150000);
+                                }}
+                              />
+                              <span>Gowes</span>
+                            </label>
+                          </div>
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="run-ride"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(300000);
+                                }}
+                              />
+                              <span>Lari & Gowes</span>
+                            </label>
+                          </div>
+                        </>
+                      ) : null}
                       <div className="input-field col s12">
                         <Gap height={10} />
                         <div className="red-text">{errors?.type}</div>
@@ -112,7 +160,7 @@ const ChooseEvent = () => {
                           type="submit"
                           className="waves-effect waves-light btn"
                         >
-                          Submit
+                          Kirim
                         </button>
                         <Gap height={25} />
                         <div>
@@ -125,56 +173,92 @@ const ChooseEvent = () => {
               ) : (
                 <>
                   <form onSubmit={storeParticipantEvent}>
-                    <div>
-                      Status : (
-                      {user?.id_member_pii
-                        ? `Anggota PII ${user?.id_member_pii}`
-                        : "Calon Anggota PII"}
-                      )
-                    </div>
                     <div className="row">
-                      <div className="input-field col s12">
-                        <label>
-                          <input
-                            type="radio"
-                            value="run"
-                            name="type"
-                            onChange={(e) => {
-                              setType(e.target.value);
-                              setAmount(250000);
-                            }}
-                          />
-                          <span>Run</span>
-                        </label>
-                      </div>
-                      <div className="input-field col s12">
-                        <label>
-                          <input
-                            type="radio"
-                            value="ride"
-                            name="type"
-                            onChange={(e) => {
-                              setType(e.target.value);
-                              setAmount(250000);
-                            }}
-                          />
-                          <span>Ride</span>
-                        </label>
-                      </div>
-                      <div className="input-field col s12">
-                        <label>
-                          <input
-                            type="radio"
-                            value="run-ride"
-                            name="type"
-                            onChange={(e) => {
-                              setType(e.target.value);
-                              setAmount(500000);
-                            }}
-                          />
-                          <span>Run & Ride</span>
-                        </label>
-                      </div>
+                      {participants_by_user_id.map((value, index) =>
+                        value.type === "run-ride" ? null : null
+                      )}
+                      {participants_by_user_id.map((value, index) =>
+                        value.type === "run" ? (
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="ride"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(250000);
+                                }}
+                              />
+                              <span>Gowes</span>
+                            </label>
+                          </div>
+                        ) : null
+                      )}
+                      {participants_by_user_id.map((value, index) =>
+                        value.type === "ride" ? (
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="run"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(250000);
+                                }}
+                              />
+                              <span>Lari</span>
+                            </label>
+                          </div>
+                        ) : null
+                      )}
+                      {!participants_by_user_id.length ? (
+                        <>
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="run"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(250000);
+                                }}
+                              />
+                              <span>Lari</span>
+                            </label>
+                          </div>
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="ride"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(250000);
+                                }}
+                              />
+                              <span>Gowes</span>
+                            </label>
+                          </div>
+                          <div className="input-field col s12">
+                            <label>
+                              <input
+                                type="radio"
+                                value="run-ride"
+                                name="type"
+                                onChange={(e) => {
+                                  setType(e.target.value);
+                                  setAmount(500000);
+                                }}
+                              />
+                              <span>Lari & Gowes</span>
+                            </label>
+                          </div>
+                        </>
+                      ) : null}
                       <div className="input-field col s12">
                         <Gap height={10} />
                         <div className="red-text">{errors?.type}</div>
@@ -183,7 +267,7 @@ const ChooseEvent = () => {
                           type="submit"
                           className="waves-effect waves-light btn"
                         >
-                          Submit
+                          Kirim
                         </button>
                         <Gap height={25} />
                         <div>

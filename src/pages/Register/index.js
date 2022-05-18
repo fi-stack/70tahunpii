@@ -1,27 +1,20 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import Helmet from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getUser, storeRegister } from "../../redux/action";
-import { Helmet } from "react-helmet";
+import { storeRegister } from "../../redux/action";
 
 const Register = () => {
   const userToken = localStorage.getItem("user-token");
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     if (userToken) {
       navigate("/dashboard");
       window.location.reload();
-    } else {
-      setTimeout(() => {
-        dispatch(getUser());
-      }, 1000);
     }
-  }, [dispatch]);
+  }, [userToken]);
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -60,7 +53,7 @@ const Register = () => {
         <div className="col m6 offset-m3 l4 offset-l4">
           <div className="card">
             <div className="card-content">
-              <span class="card-title center">Sign Up</span>
+              <span className="card-title center">Sign Up</span>
               <form onSubmit={store}>
                 <div className="row">
                   <div className="input-field col s12">
@@ -97,7 +90,7 @@ const Register = () => {
                       type="submit"
                       className="waves-effect waves-light btn"
                     >
-                      Sign Up
+                      Daftar
                     </button>
                   </div>
                   <div className="input-field col s12 center">

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Navbar, Footer } from "../../components";
+import { Footer, Navbar } from "../../components";
 import { getUser } from "../../redux/action";
 
 const MainApp = () => {
@@ -14,11 +14,12 @@ const MainApp = () => {
   useEffect(() => {
     if (!userToken) {
       navigate("/login");
+      alert("please sign in");
       window.location.reload();
     } else {
       setTimeout(() => {
         dispatch(getUser());
-      }, 1000);
+      }, 100);
     }
   }, [dispatch]);
 

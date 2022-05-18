@@ -1,5 +1,9 @@
 const Sponsor = () => {
-  return <div>Sponsor Page</div>;
+  return (
+    <div className="center-align">
+      <img src="images/forbidden.png" className="responsive-img" />
+    </div>
+  );
 };
 
 export default Sponsor;

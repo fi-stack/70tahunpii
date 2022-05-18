@@ -1,5 +1,6 @@
 import { Gap } from "../../components";
-import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import Helmet from "react-helmet";
 
 const Home = () => {
   return (
@@ -10,23 +11,32 @@ const Home = () => {
       <div className="row center-align">
         <img src="images/ePoster.png" className="responsive-img" />
       </div>
-      <Gap height={15} />
+      <div className="card orange lighten-3">
+        <div className="card-content">
+          <div
+            className="center"
+            style={{ fontSize: 28, fontWeight: "bold", color: "#616161" }}
+          >
+            Registrasi sampai 13-Mei-2022
+          </div>
+        </div>
+      </div>
       <div className="card orange lighten-5">
-        <Gap height={15} />
+        <Gap height={20} />
         <div className="card-content">
           <div className="center" style={styles.title}>
             Latar Belakang Dan Tujuan
           </div>
-          <Gap height={15} />
+          <Gap height={10} />
           <div style={styles.latarBelakangDanTujuan}>
             <ol>
               <li>
-                Event Virtual Run & Ride ini dilaksanakan sebagai salah satu
+                Event Virtual Lari & Gowes ini dilaksanakan sebagai salah satu
                 aktivitas dari rangkaian Peringatan Hari Ulang Tahun Persatuan
                 Insinyur Indonesia (PII) ke 70 di tahun 2022.
               </li>
               <li>
-                Event Virtual Run & Ride ini bertujuan untuk mempererat
+                Event Virtual Lari & Gowes ini bertujuan untuk mempererat
                 silaturahmi dan kerja sama para insinyur di Indonesia.
               </li>
               <li>
@@ -40,50 +50,63 @@ const Home = () => {
               </li>
             </ol>
           </div>
-          <Gap height={15} />
+          <Gap height={10} />
         </div>
-        <Gap height={15} />
+        <Gap height={20} />
       </div>
-      <Gap height={15} />
-      <div className="row">
-        <Gap height={15} />
+      <div id="info-event">
+        <Gap height={20} />
         <div className="center" style={styles.title}>
           Info Event
         </div>
-        <Gap height={35} />
-        <div className="col s6 center">
-          <img
-            src="images/rewards.png"
-            className="responsive-img"
-            style={styles.imgRewardRules}
-          />
-          <div style={styles.rewardRules}>Hadiah</div>
+        <div className="row">
+          <Gap height={35} />
+          <div className="col s4 center">
+            <Link to="/panduan">
+              <img
+                src="images/guide.png"
+                className="responsive-img"
+                style={styles.imgRewardRules}
+              />
+              <div style={styles.rewardRules}>Panduan</div>
+            </Link>
+          </div>
+          <div className="col s4 center">
+            <Link to="/hadiah">
+              <img
+                src="images/rewards.png"
+                className="responsive-img"
+                style={styles.imgRewardRules}
+              />
+              <div style={styles.rewardRules}>Hadiah</div>
+            </Link>
+          </div>
+          <div className="col s4 center">
+            <Link to="/peraturan-tata-tertib">
+              <img
+                src="images/rules.png"
+                className="responsive-img"
+                style={styles.imgRewardRules}
+              />
+              <div style={styles.rewardRules}>Peraturan & Tata Tertib</div>
+            </Link>
+          </div>
         </div>
-        <div className="col s6 center">
-          <img
-            src="images/rules.png"
-            className="responsive-img"
-            style={styles.imgRewardRules}
-          />
-          <div style={styles.rewardRules}>Aturan</div>
-        </div>
-        <Gap height={15} />
+        <Gap height={20} />
       </div>
-      <Gap height={15} />
       <div className="card orange lighten-5">
-        <Gap height={15} />
+        <Gap height={20} />
         <div className="card-content">
-          <Gap height={15} />
           <div className="center" style={styles.title}>
             Jadwal Kegiatan
           </div>
           <Gap height={35} />
           <img src="images/jadwalKegiatan.png" className="responsive-img" />
         </div>
+        <Gap height={20} />
       </div>
-      <Gap height={15} />
       <div className="row center-align">
-        <Gap height={15} />
+        <Gap height={20} />
         <div className="center" style={styles.title}>
           Diselenggarakan Oleh
         </div>
@@ -93,7 +116,7 @@ const Home = () => {
           className="responsive-img"
           style={styles.imgLogoPII}
         />
-        <Gap height={15} />
+        <Gap height={20} />
       </div>
     </>
   );
