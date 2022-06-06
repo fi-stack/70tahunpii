@@ -25,6 +25,7 @@ const Detail = () => {
   );
 
   const [invalidDesc, setInvalidDesc] = useState([]);
+  const [adminDesc, setAdminDesc] = useState();
   const [warningDesc, setWarningDesc] = useState([]);
 
   const zeroPad = (num, pad) => {
@@ -254,9 +255,10 @@ const Detail = () => {
                           <a href="#modal1" className="modal-trigger">
                             <i
                               class="waves-effect material-icons red-text"
-                              onClick={() =>
-                                setInvalidDesc(JSON.parse(value.invalid_desc))
-                              }
+                              onClick={() => {
+                                setInvalidDesc(JSON.parse(value.invalid_desc));
+                                setAdminDesc(value.admin_desc);
+                              }}
                             >
                               error
                             </i>
@@ -275,6 +277,18 @@ const Detail = () => {
                                   overflow: "auto",
                                 }}
                               >
+                                {adminDesc ? (
+                                  <tr>
+                                    <td>
+                                      <div className="valign-wrapper center-align">
+                                        <i class="material-icons red-text">
+                                          close
+                                        </i>
+                                        {adminDesc}
+                                      </div>
+                                    </td>
+                                  </tr>
+                                ) : null}
                                 {invalidDesc?.map((value, index) => {
                                   if (value === "manual")
                                     return (
@@ -367,7 +381,8 @@ const Detail = () => {
                                             <i class="material-icons red-text">
                                               close
                                             </i>
-                                            "Speed" aktivitas tidak valid
+                                            "Speed" aktivitas perlu di
+                                            crosscheck panitia
                                           </div>
                                         </td>
                                       </tr>

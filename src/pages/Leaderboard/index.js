@@ -149,7 +149,7 @@ const Leaderboard = () => {
                 <li>Jadwal Sinkronisasi Strava Sesi 1 : 12:00 s.d 14:00</li>
                 <li>Jadwal Sinkronisasi Strava Sesi 2 : 18:00 s.d 20:00</li>
                 <li>
-                  Sinkronisasi Strava akan mengambil 30 aktivitas terakhir
+                  Sinkronisasi terakhir pada hari Minggu 12/6/2022 jam 12.00 wib
                 </li>
                 <li>
                   Data akan berubah selama masa lomba berlangsung hingga

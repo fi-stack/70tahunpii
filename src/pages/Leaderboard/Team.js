@@ -229,15 +229,32 @@ const Team = () => {
                                     ? "Laki-Laki"
                                     : "Perempuan"}
                                 </td>
-                                <td>
-                                  <Link
-                                    to={`/leaderboard/${type}/${value.athlete_id}`}
-                                    className="waves-effect waves-light btn modal-trigger"
-                                    href="#modal1"
-                                  >
-                                    <i class="material-icons">remove_red_eye</i>
-                                  </Link>
-                                </td>
+                                {value?.athlete?.activities_count_not_valid ===
+                                0 ? (
+                                  <td>
+                                    <Link
+                                      to={`/leaderboard/${type}/${value.athlete_id}`}
+                                      className="waves-effect waves-light btn modal-trigger"
+                                      href="#modal1"
+                                    >
+                                      <i class="material-icons">
+                                        remove_red_eye
+                                      </i>
+                                    </Link>
+                                  </td>
+                                ) : (
+                                  <td>
+                                    <Link
+                                      to={`/leaderboard/${type}/${value.athlete_id}`}
+                                      className="waves-effect waves-light btn red lighten-1 modal-trigger"
+                                      href="#modal1"
+                                    >
+                                      <i class="material-icons">
+                                        remove_red_eye
+                                      </i>
+                                    </Link>
+                                  </td>
+                                )}
                               </tr>
                             ))}
                           </tbody>
