@@ -53,7 +53,7 @@ const Navbar = () => {
                   <i className="material-icons left" style={styles.navigation}>
                     account_circle
                   </i>
-                  Akun / Registrasi
+                  Akun
                 </a>
                 <ul id="dropdown1" className="dropdown-content">
                   {user?.email ? (
@@ -76,16 +76,16 @@ const Navbar = () => {
                           Masuk
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <a href="/register" style={styles.navigation}>
                           Registrasi Individu
                         </a>
-                      </li>
-                      <li>
+                      </li> */}
+                      {/* <li>
                         <Link to="/team-register" style={styles.navigation}>
                           Registrasi Tim
                         </Link>
-                      </li>
+                      </li> */}
                     </>
                   )}
                 </ul>
@@ -192,8 +192,8 @@ const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <Link to="/sponsor" style={styles.navigation}>
-                  Sponsor
+                <Link to="/pemenang" style={styles.navigation}>
+                  Pemenang
                 </Link>
               </li>
               <li>
@@ -222,7 +222,7 @@ const Navbar = () => {
             <i className="material-icons left" style={styles.navigation}>
               account_circle
             </i>
-            Akun / Registrasi
+            Akun
           </a>
           <ul id="dropdown2" className="dropdown-content">
             {user?.email ? (
@@ -245,16 +245,16 @@ const Navbar = () => {
                     Masuk
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href="/register" style={styles.navigation}>
                     Registrasi Individu
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <Link to="/team-register" style={styles.navigation}>
                     Registrasi Tim
                   </Link>
-                </li>
+                </li> */}
               </>
             )}
           </ul>
@@ -361,8 +361,8 @@ const Navbar = () => {
           </ul>
         </li>
         <li>
-          <Link to="/sponsor" style={styles.navigation}>
-            Sponsor
+          <Link to="/pemenang" style={styles.navigation}>
+            Pemenang
           </Link>
         </li>
         <li>

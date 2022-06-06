@@ -34,7 +34,7 @@ const Twibon = () => {
                   </a>
                 </div>
                 <div className="col s6 m4 l3">
-                  <a href="twb.nz/finisherlaridangowesonlinepii">
+                  <a href="https://twb.nz/finisherlaridangowesonlinepii">
                     <img
                       src="/images/gallery/twibbonFinisher.png"
                       className="responsive-img"
@@ -43,7 +43,7 @@ const Twibon = () => {
                   </a>
                 </div>
                 <div className="col s6 m4 l3">
-                  <a href="twb.nz/finisherlari170kmhut70pii">
+                  <a href="https://twb.nz/finisherlari170kmhut70pii">
                     <img
                       src="/images/gallery/twibbonFinisherLari.png"
                       className="responsive-img"
@@ -52,7 +52,7 @@ const Twibon = () => {
                   </a>
                 </div>
                 <div className="col s6 m4 l3">
-                  <a href="twb.nz/finishergowes700kmhut70pii">
+                  <a href="https://twb.nz/finishergowes700kmhut70pii">
                     <img
                       src="/images/gallery/twibbonFinisherGowes.png"
                       className="responsive-img"

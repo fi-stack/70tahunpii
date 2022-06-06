@@ -81,9 +81,9 @@ const Login = () => {
                       Masuk
                     </button>
                   </div>
-                  <div className="input-field col s12 center">
+                  {/* <div className="input-field col s12 center">
                     <Link to="/register">Belum Punya Akun?</Link>
-                  </div>
+                  </div> */}
                 </div>
               </form>
             </div>

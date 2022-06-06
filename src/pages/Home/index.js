@@ -11,16 +11,6 @@ const Home = () => {
       <div className="row center-align">
         <img src="images/ePoster.png" className="responsive-img" />
       </div>
-      <div className="card orange lighten-3">
-        <div className="card-content">
-          <div
-            className="center"
-            style={{ fontSize: 28, fontWeight: "bold", color: "#616161" }}
-          >
-            Registrasi sampai 13-Mei-2022
-          </div>
-        </div>
-      </div>
       <div className="card orange lighten-5">
         <Gap height={20} />
         <div className="card-content">

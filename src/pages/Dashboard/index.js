@@ -66,12 +66,13 @@ const Dashboard = () => {
               !user?.village_code ||
               !user?.post_code ||
               !user?.jersey_size ? (
-                <Link
-                  to="/profile-update"
-                  className="waves-effect waves-light btn"
-                >
-                  Lengkapi Biodata
-                </Link>
+                // <Link
+                //   to="/profile-update"
+                //   className="waves-effect waves-light btn"
+                // >
+                //   Lengkapi Biodata
+                // </Link>
+                <div className="red-text">Registrasi Telah Ditutup</div>
               ) : (
                 <>
                   <div>
