@@ -176,7 +176,7 @@ const Dashboard = () => {
                     if (participant_details_by_user_id?.length > 0) {
                       return (
                         <>
-                          <div className="card card-content">
+                          {/* <div className="card card-content">
                             <div className="red-text">
                               *Jika anda seorang (Kapten) dari tim anda,
                               silahkan klik <b>REGISTRASI TIM</b> untuk membuat
@@ -191,7 +191,7 @@ const Dashboard = () => {
                             >
                               Registrasi Tim
                             </Link>
-                          </div>
+                          </div> */}
                         </>
                       );
                     }

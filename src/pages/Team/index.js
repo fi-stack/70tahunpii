@@ -107,7 +107,7 @@ const Team = () => {
                     </div>
                   </span>
                   <div>Status : Lead</div>
-                  <div>
+                  {/* <div>
                     *Jika ingin menghapus / membubarkan tim klik{" "}
                     <a
                       href="#"
@@ -115,14 +115,14 @@ const Team = () => {
                     >
                       Hapus Tim
                     </a>
-                  </div>
+                  </div> */}
                   <Gap height={10} />
-                  <Link
+                  {/* <Link
                     to={`/team/${teamId}/${team?.type}/add`}
                     className="waves-effect waves-light btn"
                   >
                     Tambah Anggota
-                  </Link>
+                  </Link> */}
                 </>
               ) : (
                 <>
@@ -143,7 +143,7 @@ const Team = () => {
                     </div>
                   </span>
                   <div>Status : Anggota</div>
-                  <div>
+                  {/* <div>
                     *Jika ingin meninggalkan tim klik{" "}
                     <a
                       style={{ cursor: "pointer" }}
@@ -151,7 +151,7 @@ const Team = () => {
                     >
                       Tinggalkan Tim
                     </a>
-                  </div>
+                  </div> */}
                 </>
               )}
               <table style={{ display: "block", overflow: "auto" }}>
@@ -268,16 +268,17 @@ const Team = () => {
                       </td>
                       <td>
                         {team?.user_id === user?.id &&
-                        value?.user_id !== user?.id ? (
-                          <button
-                            className="waves-effect waves-light btn"
-                            onClick={() =>
-                              handleDeleteMemberTeam(teamId, user?.id, value.id)
-                            }
-                          >
-                            Hapus
-                          </button>
-                        ) : null}
+                        value?.user_id !== user?.id
+                          ? null
+                          : // <button
+                            //   className="waves-effect waves-light btn"
+                            //   onClick={() =>
+                            //     handleDeleteMemberTeam(teamId, user?.id, value.id)
+                            //   }
+                            // >
+                            //   Hapus
+                            // </button>
+                            null}
                       </td>
                     </tr>
                   ))}

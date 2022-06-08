@@ -96,7 +96,7 @@ const PeraturanTataTertib = () => {
               kekurangan biaya registrasi individu.
             </li>
             <li>
-              Masa lomba 14 Mei 2022 jam -5.00 wib – 11 Juni 2022 jam 19.00 wib.
+              Masa lomba 14 Mei 2022 jam 5.00 wib – 11 Juni 2022 jam 19.00 wib.
             </li>
             <li>
               Metoda pencatatan jarak tempuh aktivitas lari dan gowes hanya
@@ -348,7 +348,7 @@ const PeraturanTataTertib = () => {
             <li>
               Data aktivitas bersepeda yang valid adalah terekam dengan benar di
               Strava pada masa 14 Mei 2022 jam 05.00 wib sampai dengan 11 Juni
-              2022 jam 19.00 wib (waktu start aktivitas).
+              2022 jam 19.00 wib.
             </li>
             <li>
               Rekaman aktivitas yang di flag merah oleh STRAVA (ada potensi
