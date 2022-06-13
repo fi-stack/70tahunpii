@@ -61,6 +61,15 @@ const Leaderboard = () => {
           rows.push(value);
         }
       }
+      if (rangeAge === "d") {
+        if (
+          value.participant_details[0]?.type === type &&
+          value.user?.gender === gender &&
+          getAge(value.user?.birthday) <= 50
+        ) {
+          rows.push(value);
+        }
+      }
       if (rangeAge === "x") {
         if (value.participant_details[0]?.type === type) {
           rows.push(value);
@@ -209,30 +218,52 @@ const Leaderboard = () => {
                 </a>
               </li>
               <li class="divider" tabindex="-1"></li>
-              <li>
-                <a
-                  href="#!"
-                  onClick={() => {
-                    setGender("female");
-                    setRangeAge("a");
-                    setTitleButton("Perempuan 0 - 35 Tahun");
-                  }}
-                >
-                  Perempuan 0 - 35 Tahun
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#!"
-                  onClick={() => {
-                    setGender("female");
-                    setRangeAge("b");
-                    setTitleButton("Perempuan 36 - 50 Tahun");
-                  }}
-                >
-                  Perempuan 36 - 50 Tahun
-                </a>
-              </li>
+              {(() => {
+                if (type === "run")
+                  return (
+                    <>
+                      <li>
+                        <a
+                          href="#!"
+                          onClick={() => {
+                            setGender("female");
+                            setRangeAge("a");
+                            setTitleButton("Perempuan 0 - 35 Tahun");
+                          }}
+                        >
+                          Perempuan 0 - 35 Tahun
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#!"
+                          onClick={() => {
+                            setGender("female");
+                            setRangeAge("b");
+                            setTitleButton("Perempuan 36 - 50 Tahun");
+                          }}
+                        >
+                          Perempuan 36 - 50 Tahun
+                        </a>
+                      </li>
+                    </>
+                  );
+                else if (type === "ride")
+                  return (
+                    <li>
+                      <a
+                        href="#!"
+                        onClick={() => {
+                          setGender("female");
+                          setRangeAge("d");
+                          setTitleButton("Perempuan 0 - 50 Tahun");
+                        }}
+                      >
+                        Perempuan 0 - 50 Tahun
+                      </a>
+                    </li>
+                  );
+              })()}
               <li>
                 <a
                   href="#!"
